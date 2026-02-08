@@ -40,19 +40,19 @@
         //     hold-trigger-on-release;
         // };
 
-        // MACRO for smart arrow keys
+        // MACRO for smart morphing behaviors
         // Logic:
         // 1. Outer morph (GUI_MORPH) checks for GUI.
         //    - If GUI present: Send standard KEY (and keep GUI).
         //    - If GUI absent:  Delegate to inner morph (SFT_MORPH).
         // 2. Inner morph (SFT_MORPH) checks for Shift.
-        //    - If Shift present: Send PG_KEY (Shift consumed by default).
+        //    - If Shift present: Send MORPH_KEY (Shift consumed by default).
         //    - If Shift absent:  Send standard KEY.
-        #define SMART_ARROW(NAME, KEY, PG_KEY) \
+        #define SMART_MORPH(NAME, KEY, MORPH_KEY) \
             mm_##NAME##_sft: mm_##NAME##_sft { \
                 compatible = "zmk,behavior-mod-morph"; \
                 #binding-cells = <0>; \
-                bindings = <&kp KEY>, <&kp PG_KEY>; \
+                bindings = <&kp KEY>, <&kp MORPH_KEY>; \
                 mods = <(MOD_LSFT|MOD_RSFT)>; \
             }; \
             mm_##NAME: mm_##NAME { \
@@ -63,10 +63,11 @@
                 keep-mods = <(MOD_LGUI|MOD_RGUI)>; \
             };
 
-        SMART_ARROW(left,  LEFT,  HOME)
-        SMART_ARROW(down,  DOWN,  PGDN)
-        SMART_ARROW(up,    UP,    PGUP)
-        SMART_ARROW(right, RIGHT, END)
+        SMART_MORPH(left,   LEFT,  HOME)
+        SMART_MORPH(down,   DOWN,  PGDN)
+        SMART_MORPH(up,     UP,    PGUP)
+        SMART_MORPH(right,  RIGHT, END)
+        SMART_MORPH(bs_del, BSPC,  DEL)
     };
 
     keymap {
@@ -78,7 +79,7 @@
                 &lt SYM S   &mt LSHIFT T &mt LGUI R &lt NAV D &kp Y       &kp F &lt MSE N &mt RGUI E &mt RSHIFT A &lt SYM I
                 &mt LCTRL X &mt LALT K   &kp J      &kp G     &kp W       &kp Z &kp H     &kp COMMA  &mt LALT DOT &mt RCTRL SLASH
 
-                               &key_repeat &kp TAB   &kp ENTER      &kp SPACE &kp BSPC  &key_repeat
+                               &key_repeat &kp TAB   &kp ENTER      &kp SPACE &mm_bs_del  &key_repeat
             >;
         };
 
@@ -88,7 +89,7 @@
                 &kp A     &kp S     &kp D     &kp F     &kp G          &kp H     &kp J     &kp K     &kp L     &kp SEMI
                 &kp Z     &kp X     &kp C     &kp V     &kp B          &kp N     &kp M     &kp COMMA &kp DOT   &kp SLASH
 
-                               &studio_unlock &kp TAB   &kp ENTER      &kp SPACE &kp BSPC  &kp DEL
+                               &studio_unlock &kp TAB   &kp ENTER      &kp SPACE &mm_bs_del  &kp DEL
             >;
         };
 
