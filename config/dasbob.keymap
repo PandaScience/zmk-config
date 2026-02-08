@@ -70,6 +70,39 @@
         SMART_MORPH(bs_del, BSPC,  DEL)
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        // Escape
+        combo_esc_left  { timeout-ms = <50>; key-positions = <12 14>; bindings = <&kp ESC>; };
+        combo_esc_right { timeout-ms = <50>; key-positions = <15 17>; bindings = <&kp ESC>; };
+
+        // Symbols Left
+        combo_sym_tild { timeout-ms = <50>; key-positions = <0 10>; bindings = <&kp TILDE>; };
+        combo_sym_exlm { timeout-ms = <50>; key-positions = <1 11>; bindings = <&kp EXCL>; };
+        combo_sym_at   { timeout-ms = <50>; key-positions = <2 12>; bindings = <&kp AT>; };
+        combo_sym_hash { timeout-ms = <50>; key-positions = <3 13>; bindings = <&kp HASH>; };
+        combo_sym_dlr  { timeout-ms = <50>; key-positions = <4 14>; bindings = <&kp DOLLAR>; };
+
+        combo_sym_perc { timeout-ms = <50>; key-positions = <10 20>; bindings = <&kp PRCNT>; };
+        combo_sym_circ { timeout-ms = <50>; key-positions = <11 21>; bindings = <&kp CARET>; };
+        combo_sym_ampr { timeout-ms = <50>; key-positions = <12 22>; bindings = <&kp AMPS>; };
+        combo_sym_astr { timeout-ms = <50>; key-positions = <13 23>; bindings = <&kp ASTERISK>; };
+        combo_sym_grv  { timeout-ms = <50>; key-positions = <14 24>; bindings = <&kp GRAVE>; };
+
+        // Symbols Right
+        combo_sym_unds { timeout-ms = <50>; key-positions = <5 15>; bindings = <&kp UNDER>; };
+        combo_sym_mins { timeout-ms = <50>; key-positions = <6 16>; bindings = <&kp MINUS>; };
+        combo_sym_plus { timeout-ms = <50>; key-positions = <7 17>; bindings = <&kp PLUS>; };
+        combo_sym_eql  { timeout-ms = <50>; key-positions = <8 18>; bindings = <&kp EQUAL>; };
+
+        combo_sym_pipe { timeout-ms = <50>; key-positions = <15 25>; bindings = <&kp PIPE>; };
+        combo_sym_quot { timeout-ms = <50>; key-positions = <16 26>; bindings = <&kp SQT>; };
+        combo_sym_scln { timeout-ms = <50>; key-positions = <17 27>; bindings = <&kp SEMI>; };
+        combo_sym_coln { timeout-ms = <50>; key-positions = <18 28>; bindings = <&kp COLON>; };
+        combo_sym_bsls { timeout-ms = <50>; key-positions = <19 29>; bindings = <&kp BSLH>; };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
