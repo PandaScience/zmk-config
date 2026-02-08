@@ -1,0 +1,16 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: PandaScience
+      url-base: https://github.com/PandaScience
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: v0.3.0
+      import: app/west.yml
+    - name: zmk-module-dasbob
+      remote: PandaScience
+      revision: main
+  self:
+    path: config
