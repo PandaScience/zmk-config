@@ -39,18 +39,34 @@
         //     bindings = <&kp>, <&kp>;
         //     hold-trigger-on-release;
         // };
-        morph_BC: morph_BC {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp B>, <&kp C>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-        morph_ABC: morph_ABC {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp A>, <&morph_BC>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
+
+        // MACRO for smart arrow keys
+        // Logic:
+        // 1. Outer morph (GUI_MORPH) checks for GUI.
+        //    - If GUI present: Send standard KEY (and keep GUI).
+        //    - If GUI absent:  Delegate to inner morph (SFT_MORPH).
+        // 2. Inner morph (SFT_MORPH) checks for Shift.
+        //    - If Shift present: Send PG_KEY (Shift consumed by default).
+        //    - If Shift absent:  Send standard KEY.
+        #define SMART_ARROW(NAME, KEY, PG_KEY) \
+            mm_##NAME##_sft: mm_##NAME##_sft { \
+                compatible = "zmk,behavior-mod-morph"; \
+                #binding-cells = <0>; \
+                bindings = <&kp KEY>, <&kp PG_KEY>; \
+                mods = <(MOD_LSFT|MOD_RSFT)>; \
+            }; \
+            mm_##NAME: mm_##NAME { \
+                compatible = "zmk,behavior-mod-morph"; \
+                #binding-cells = <0>; \
+                bindings = <&mm_##NAME##_sft>, <&kp KEY>; \
+                mods = <(MOD_LGUI|MOD_RGUI)>; \
+                keep-mods = <(MOD_LGUI|MOD_RGUI)>; \
+            };
+
+        SMART_ARROW(left,  LEFT,  HOME)
+        SMART_ARROW(down,  DOWN,  PGDN)
+        SMART_ARROW(up,    UP,    PGUP)
+        SMART_ARROW(right, RIGHT, END)
     };
 
     keymap {
@@ -108,8 +124,8 @@
 
         navigation {
             bindings = <
-                &none      &none       &none     &none     &none          &none  &kp HOME    &kp PGDN   &kp PGUP  &kp END
-                &none      &kp LSHIFT  &kp LGUI  &none     &none          &none  &kp LEFT    &kp DOWN   &kp UP    &kp RIGHT
+                &none      &none       &none     &none     &none          &none  &kp HOME  &kp PGDN  &kp PGUP  &kp END
+                &none      &kp LSHIFT  &kp LGUI  &none     &none          &none  &mm_left  &mm_down  &mm_up    &mm_right
                 &kp LCTRL  &kp LALT    &none     &none     &none          &none  &kp K_PASTE &kp K_COPY &kp K_CUT &kp INSERT
 
                                &none &trans &trans      &trans &trans  &none
