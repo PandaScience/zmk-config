@@ -1,6 +1,11 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+
+// put before pointing.h include
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 15    // default: 10
 #include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
 
 // layer shortcuts
 #define BSE 0
@@ -10,9 +15,44 @@
 #define FUN 4
 #define NAV 5
 #define MSE 6
-#define SYS 7
+#define ACL0 7
+#define ACL1 8
+#define ACL2 9
+#define SYS 10
+
+// full-transparent phandle-array for ACL layers
+#define T_36 &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans \
+             &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans \
+             &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans \
+                           &trans &trans &trans    &trans &trans &trans
 
 #define REP_ALT &rp_ht RALT 0
+
+// disable acceleration and set default speed for mouse movement and scrolling
+&mmv {
+    time-to-max-speed-ms = <0>;
+};
+
+&msc {
+    time-to-max-speed-ms = <0>;
+};
+
+&mmv_input_listener {
+    slow {
+        layers = <ACL0>;
+        input-processors = <&zip_xy_scaler 1 2>;
+    };
+
+    precision {
+        layers = <ACL1>;
+        input-processors = <&zip_xy_scaler 1 6>;
+    };
+
+    fast {
+        layers = <ACL2>;
+        input-processors = <&zip_xy_scaler 3 1>;
+    };
+};
 
 /*
 * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
@@ -152,12 +192,17 @@
         mouse {
             bindings = <
                 &none     &msc SCRL_DOWN &mmv MOVE_UP   &msc SCRL_UP    &none          &none  &none    &none    &none    &none
-                &mkp MB4  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none          &none  &none    &none    &none    &none
+                &mkp MB4  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none          &none  &none    &mo ACL0 &mo ACL1 &mo ACL2
                 &mkp MB5  &kp LALT       &none          &none           &none          &none  &none    &none    &none    &none
 
                                &mkp MB3 &mkp MB2  &mkp MB1      &mkp MB1 &mkp MB2 &mkp MB3
             >;
         };
+
+        // Speed Layers for Input Processors
+        mouse_acl0 { bindings = < T_36 >; };
+        mouse_acl1 { bindings = < T_36 >; };
+        mouse_acl2 { bindings = < T_36 >; };
 
         system {
             bindings = <
