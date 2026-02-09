@@ -28,6 +28,11 @@
 
 #define REP_ALT &rp_ht RALT 0
 
+// override the default flavor for Mod-Tap to what Layer-Tap is using
+&mt {
+    flavor = "tap-preferred";
+};
+
 // disable acceleration and set default speed for mouse movement and scrolling
 &mmv {
     time-to-max-speed-ms = <0>;
