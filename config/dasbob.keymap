@@ -31,45 +31,26 @@
 
 / {
     behaviors {
-        // hm: homerow_mods {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     #binding-cells = <2>;
-        //     flavor = "tap-preferred";
-        //     require-prior-idle-ms = <150>;
-        //     tapping-term-ms = <280>;
-        //     quick-tap-ms = <175>;
-        //     bindings = <&kp>, <&kp>;
-        //     hold-trigger-on-release;
-        // };
+        // Smart Backspace: Tap=BSPC, Shift+Tap=DEL
+        mm_bs_del: mm_bs_del {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BSPC>, <&kp DEL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
 
-        // MACRO for smart morphing behaviors
-        // Logic:
-        // 1. Outer morph (GUI_MORPH) checks for GUI.
-        //    - If GUI present: Send standard KEY (and keep GUI).
-        //    - If GUI absent:  Delegate to inner morph (SFT_MORPH).
-        // 2. Inner morph (SFT_MORPH) checks for Shift.
-        //    - If Shift present: Send MORPH_KEY (Shift consumed by default).
-        //    - If Shift absent:  Send standard KEY.
-        #define SMART_MORPH(NAME, KEY, MORPH_KEY) \
-            mm_##NAME##_sft: mm_##NAME##_sft { \
-                compatible = "zmk,behavior-mod-morph"; \
-                #binding-cells = <0>; \
-                bindings = <&kp KEY>, <&kp MORPH_KEY>; \
-                mods = <(MOD_LSFT|MOD_RSFT)>; \
-            }; \
-            mm_##NAME: mm_##NAME { \
-                compatible = "zmk,behavior-mod-morph"; \
-                #binding-cells = <0>; \
-                bindings = <&mm_##NAME##_sft>, <&kp KEY>; \
-                mods = <(MOD_LGUI|MOD_RGUI)>; \
-                keep-mods = <(MOD_LGUI|MOD_RGUI)>; \
-            };
-
-        SMART_MORPH(left,   LEFT,  HOME)
-        SMART_MORPH(down,   DOWN,  PGDN)
-        SMART_MORPH(up,     UP,    PGUP)
-        SMART_MORPH(right,  RIGHT, END)
-        SMART_MORPH(bs_del, BSPC,  DEL)
+        // Smart Repeat: Tap=Repeat, Hold=AltGr
+        // NOTE: hold-tap enforces 2 arguments, so just pass anything (e.g. 0), it will be ignored in the binding
+        rp_ht: repeat_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&key_repeat>;
+            hold-trigger-on-release;
+        };
     };
 
     combos {
@@ -160,9 +141,9 @@
 
         navigation {
             bindings = <
-                &none      &none       &none     &none     &none          &none  &kp HOME  &kp PGDN  &kp PGUP  &kp END
-                &none      &kp LSHIFT  &kp LGUI  &none     &none          &none  &mm_left  &mm_down  &mm_up    &mm_right
-                &kp LCTRL  &kp LALT    &none     &none     &none          &none  &kp K_PASTE &kp K_COPY &kp K_CUT &kp INSERT
+                &none      &none       &none     &none     &none          &none  &kp HOME   &kp PGDN    &kp PGUP  &kp END
+                &none      &kp LSHIFT  &kp LGUI  &none     &none          &none  &kp LEFT   &kp DOWN    &kp UP    &kp RIGHT
+                &kp LCTRL  &kp LALT    &none     &none     &none          &none  &kp K_COPY &kp K_PASTE &kp K_CUT &none
 
                                &none &trans &trans      &trans &trans  &none
             >;
