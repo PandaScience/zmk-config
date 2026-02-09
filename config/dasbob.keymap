@@ -12,6 +12,8 @@
 #define MSE 6
 #define SYS 7
 
+#define REP_ALT &rp_ht RALT 0
+
 /*
 * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
 * │ V │ M │ L │ C │ P │       │ B │ ★ │ U │ O │ Q │
@@ -108,11 +110,11 @@
 
         strdy {
             bindings = <
-                &kp V       &kp M        &kp L      &kp C     &kp P       &kp B &magic    &kp U      &kp O        &kp Q
+                &kp V       &kp M        &kp L      &kp C     &kp P       &kp B &kp X     &kp U      &kp O        &kp Q
                 &lt SYM S   &mt LSHIFT T &mt LGUI R &lt NAV D &kp Y       &kp F &lt MSE N &mt RGUI E &mt RSHIFT A &lt SYM I
                 &mt LCTRL X &mt LALT K   &kp J      &kp G     &kp W       &kp Z &kp H     &kp COMMA  &mt LALT DOT &mt RCTRL SLASH
 
-                               &key_repeat &kp TAB   &kp ENTER      &kp SPACE &mm_bs_del  &key_repeat
+                               REP_ALT &kp TAB   &lt NUM ENTER      &kp SPACE &mm_bs_del  REP_ALT
             >;
         };
 
@@ -132,13 +134,13 @@
                 &none     &kp LBRC     &kp LPAR   &kp RPAR     &kp RBRC            &kp UNDER    &kp MINUS     &kp PLUS     &kp EQUAL        &none
                 &kp LCTRL &kp LALT     &kp LBKT   &kp RBKT     &kp DQT             &kp PIPE     &kp SQT       &kp SEMI     &kp COLON        &kp BSLH
 
-                               &mo SYS &trans   &trans      &trans &trans &none
+                               &mo SYS &trans   &kp ENTER      &kp SPACE &trans &none
             >;
         };
 
         numpad {
             bindings = <
-                &none      &none       &none     &none     &none          &kp KP_DOT       &kp N7    &kp N8    &kp N9    &kp KP_COMMA
+                &none      &none       &none     &none     &none          &kp DOT          &kp N7    &kp N8    &kp N9    &kp COMMA
                 &none      &kp LSHIFT  &kp LGUI  &none     &mo FUN        &kp KP_MULTIPLY  &kp N4    &kp N5    &kp N6    &kp KP_MINUS
                 &kp LCTRL  &kp LALT    &none     &none     &none          &kp KP_SLASH     &kp N1    &kp N2    &kp N3    &kp KP_PLUS
 
