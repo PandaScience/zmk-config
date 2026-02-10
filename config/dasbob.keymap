@@ -7,6 +7,10 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
 
+// provided by urob/zmk-auto-layer
+// see https://github.com/urob/zmk-config?tab=readme-ov-file#numword for details
+#include <behaviors/num_word.dtsi>
+
 // layer shortcuts
 #define BSE 0
 #define SYM 1
@@ -170,7 +174,7 @@
                 &kp ENTER &mt LSHIFT LBRC &mt LGUI LPAR &kp RPAR &kp RBRC            &kp UNDER    &kp MINUS     &kp PLUS     &kp EQUAL        &kp ENTER
                 &kp LCTRL &kp LALT        &kp LBKT      &kp RBKT &kp DQT             &kp PIPE     &kp SQT       &kp SEMI     &kp COLON        &kp BSLH
 
-                               &mo SYS &trans   &kp ENTER      &kp SPACE &trans &none
+                               &mo SYS &none   &num_word NUM      &kp SPACE &none &key_repeat
             >;
         };
 

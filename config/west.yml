@@ -14,6 +14,9 @@ manifest:
     - name: zmk-adaptive-key
       remote: urob
       revision: v0.3 # Should match ZMK release.
+    - name: zmk-auto-layer
+      remote: urob
+      revision: v0.3 # Should match ZMK release.
     - name: zmk-module-dasbob
       remote: PandaScience
       revision: main
