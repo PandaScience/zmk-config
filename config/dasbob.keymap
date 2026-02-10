@@ -95,6 +95,27 @@
             bindings = <&kp>, <&key_repeat>;
             hold-trigger-on-release;
         };
+
+        // "Magic Key", using https://github.com/urob/zmk-adaptive-key/
+        ak_magic: ak_magic {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp K>;
+
+            // cmdline
+            akt_ls   { trigger-keys = <L>; max-prior-idle-ms = <300>; bindings = <&kp S &kp SPACE>; };
+            akt_cd   { trigger-keys = <C>; max-prior-idle-ms = <300>; bindings = <&kp D &kp SPACE>; };
+            akt_rm   { trigger-keys = <R>; max-prior-idle-ms = <300>; bindings = <&kp M &kp SPACE>; };
+            akt_mv   { trigger-keys = <M>; max-prior-idle-ms = <300>; bindings = <&kp V &kp SPACE>; };
+            akt_git  { trigger-keys = <G>; max-prior-idle-ms = <300>; bindings = <&kp I &kp T &kp SPACE>; };
+            akt_vim  { trigger-keys = <V>; max-prior-idle-ms = <300>; bindings = <&kp I &kp M &kp SPACE>; };
+            akt_yadm { trigger-keys = <Y>; max-prior-idle-ms = <300>; bindings = <&kp A &kp D &kp M &kp SPACE>; };
+
+            // words + endings
+            akt_the { trigger-keys = <T>; max-prior-idle-ms = <300>; bindings = <&kp H &kp E &kp SPACE>; };
+            akt_and { trigger-keys = <A>; max-prior-idle-ms = <300>; bindings = <&kp N &kp D &kp SPACE>; };
+            akt_ing { trigger-keys = <I>; max-prior-idle-ms = <300>; bindings = <&kp N &kp G &kp SPACE>; };
+        };
     };
 
     combos {
@@ -135,7 +156,7 @@
 
         strdy {
             bindings = <
-                &kp V       &kp M        &kp L      &kp C     &kp P       &kp B &kp X     &kp U      &kp O        &kp Q
+                &kp V       &kp M        &kp L      &kp C     &kp P       &kp B &ak_magic &kp U      &kp O        &kp Q
                 &lt SYM S   &mt LSHIFT T &mt LGUI R &lt NAV D &kp Y       &kp F &lt MSE N &mt RGUI E &mt RSHIFT A &lt SYM I
                 &mt LCTRL X &mt LALT K   &kp J      &kp G     &kp W       &kp Z &kp H     &kp COMMA  &mt LALT DOT &mt RCTRL SLASH
 
