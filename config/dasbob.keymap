@@ -114,6 +114,9 @@
         combo_esc_left  { timeout-ms = <50>; key-positions = <12 14>; bindings = <&kp ESC>; };
         combo_esc_right { timeout-ms = <50>; key-positions = <15 17>; bindings = <&kp ESC>; };
 
+        // Caps Word
+        combo_caps_word { timeout-ms = <50>; key-positions = <11 18>; bindings = <&caps_word>; };
+
         // Symbols Left
         combo_sym_tild { timeout-ms = <50>; key-positions = <0 10>; bindings = <&kp TILDE>; };
         combo_sym_exlm { timeout-ms = <50>; key-positions = <1 11>; bindings = <&kp EXCL>; };
