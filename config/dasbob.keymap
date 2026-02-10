@@ -9,16 +9,15 @@
 
 // layer shortcuts
 #define BSE 0
-#define STD 1
-#define SYM 2
-#define NUM 3
-#define FUN 4
-#define NAV 5
-#define MSE 6
-#define ACL0 7
-#define ACL1 8
-#define ACL2 9
-#define SYS 10
+#define SYM 1
+#define NUM 2
+#define FUN 3
+#define NAV 4
+#define MSE 5
+#define ACL0 6
+#define ACL1 7
+#define ACL2 8
+#define SYS 9
 
 // full-transparent phandle-array for ACL layers
 #define T_36 &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans \
@@ -141,16 +140,6 @@
                 &mt LCTRL X &mt LALT K   &kp J      &kp G     &kp W       &kp Z &kp H     &kp COMMA  &mt LALT DOT &mt RCTRL SLASH
 
                                REP_ALT &kp TAB   &lt NUM ENTER      &kp SPACE &mm_bs_del  REP_ALT
-            >;
-        };
-
-        qwerty {
-            bindings = <
-                &kp Q     &kp W     &kp E     &kp R     &kp T          &kp Y     &kp U     &kp I     &kp O     &kp P
-                &kp A     &kp S     &kp D     &kp F     &kp G          &kp H     &kp J     &kp K     &kp L     &kp SEMI
-                &kp Z     &kp X     &kp C     &kp V     &kp B          &kp N     &kp M     &kp COMMA &kp DOT   &kp SLASH
-
-                               &studio_unlock &kp TAB   &kp ENTER      &kp SPACE &mm_bs_del  &kp DEL
             >;
         };
 
