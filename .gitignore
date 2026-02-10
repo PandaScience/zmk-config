@@ -1,2 +1,8 @@
-
-.zmk/
+.west/
+build/
+modules/
+zephyr/
+zmk/
+zmk-adaptive-key/
+zmk-auto-layer/
+zmk-module-dasbob/
