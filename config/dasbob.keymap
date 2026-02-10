@@ -139,7 +139,7 @@
                 &lt SYM S   &mt LSHIFT T &mt LGUI R &lt NAV D &kp Y       &kp F &lt MSE N &mt RGUI E &mt RSHIFT A &lt SYM I
                 &mt LCTRL X &mt LALT K   &kp J      &kp G     &kp W       &kp Z &kp H     &kp COMMA  &mt LALT DOT &mt RCTRL SLASH
 
-                               REP_ALT &kp TAB   &lt NUM ENTER      &kp SPACE &mm_bs_del  REP_ALT
+                               REP_ALT &kp TAB   &lt NUM SPACE      &kp SPACE &mm_bs_del  REP_ALT
             >;
         };
 
