@@ -105,6 +105,21 @@
             akt_and { trigger-keys = <A>; max-prior-idle-ms = <300>; bindings = <&kp N &kp D &kp SPACE>; };
             akt_ing { trigger-keys = <I>; max-prior-idle-ms = <300>; bindings = <&kp N &kp G &kp SPACE>; };
         };
+
+        // "Arcane Key", cmp: https://www.reddit.com/r/KeyboardLayouts/comments/1cb2v3l
+        rep_l: rep_l {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&key_repeat>; // DEFAULT: last key was on right
+            // same_side_trigger { trigger-keys = <ALPHAS_L>; max-prior-idle-ms = <300>; bindings = <&kp L>; }
+        };
+
+        rep_r: rep_r {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&key_repeat>; // DEFAULT: last key was on left
+            // same_side_trigger { trigger-keys = <ALPHAS_R>; max-prior-idle-ms = <300>; bindings = <&kp L>; }
+        };
     };
 
     combos {
