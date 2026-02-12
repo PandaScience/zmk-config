@@ -167,19 +167,19 @@
 
         strdy {
             bindings = <
-                &kp V       &kp M        &kp L      &kp C     &kp P       &kp B &ak_magic &kp U      &kp O        &kp Q
-                &lt SYM S   &mt LSHIFT T &mt LGUI R &lt NAV D &kp Y       &kp F &lt MSE N &mt RGUI E &mt RSHIFT A &lt SYM I
-                &mt LCTRL X &mt LALT K   &kp J      &kp G     &kp W       &kp Z &kp H     &kp COMMA  &mt LALT DOT &mt RCTRL SLASH
+                &mt LS(LCTRL) V &kp M      &kp L        &kp C     &kp P       &kp B &ak_magic &kp U        &kp O        &mt RS(RCTRL) Q
+                &lt SYM S       &mt LGUI T &mt LSHIFT R &lt NAV D &kp Y       &kp F &lt MSE N &mt RSHIFT E &mt RGUI A   &lt SYM I
+                &mt LCTRL X     &mt LALT K &kp J        &kp G     &kp W       &kp Z &kp H     &kp COMMA    &mt LALT DOT &mt RCTRL SLASH
 
-                               REP_ALT &kp TAB   &lt NUM SPACE      &kp SPACE &mm_bs_del  REP_ALT
+                                        REP_ALT &kp TAB   &lt NUM ENTER       &kp SPACE &mm_bs_del  REP_ALT
             >;
         };
 
         symbol {
             bindings = <
-                &kp TILDE &kp EXCL        &kp AT        &kp HASH &kp DOLLAR          &kp PERCENT  &kp CARET     &kp AMPS     &kp ASTERISK     &kp GRAVE
-                &kp ENTER &mt LSHIFT LBRC &mt LGUI LPAR &kp RPAR &kp RBRC            &kp UNDER    &kp MINUS     &kp PLUS     &kp EQUAL        &kp ENTER
-                &kp LCTRL &kp LALT        &kp LBKT      &kp RBKT &kp DQT             &kp PIPE     &kp SQT       &kp SEMI     &kp COLON        &kp BSLH
+                &kp TILDE &kp EXCL       &kp AT          &kp HASH &kp DOLLAR          &kp PERCENT  &kp CARET     &kp AMPS     &kp ASTERISK     &kp GRAVE
+                &kp ENTER &mt LGUI LBRC  &mt LSHIFT LPAR &kp RPAR &kp RBRC            &kp UNDER    &kp MINUS     &kp PLUS     &kp EQUAL        &kp ENTER
+                &kp LCTRL &kp LALT       &kp LBKT        &kp RBKT &kp DQT             &kp PIPE     &kp SQT       &kp SEMI     &kp COLON        &kp BSLH
 
                                &mo SYS &trans   &num_word NUM      &kp SPACE &trans &updir
             >;
@@ -187,9 +187,9 @@
 
         numpad {
             bindings = <
-                &none      &none       &none     &none     &none          &kp DOT          &kp N7    &kp N8    &kp N9    &kp COMMA
-                &none      &kp LSHIFT  &kp LGUI  &none     &mo FUN        &kp KP_MULTIPLY  &kp N4    &kp N5    &kp N6    &kp KP_MINUS
-                &kp LCTRL  &kp LALT    &none     &none     &none          &kp KP_SLASH     &kp N1    &kp N2    &kp N3    &kp KP_PLUS
+                &kp LS(LCTRL) &none     &none       &none     &none          &kp DOT          &kp N7    &kp N8    &kp N9    &kp COMMA
+                &none         &kp LGUI  &kp LSHIFT  &none     &mo FUN        &kp KP_MULTIPLY  &kp N4    &kp N5    &kp N6    &kp KP_MINUS
+                &kp LCTRL     &kp LALT  &none       &none     &none          &kp KP_SLASH     &kp N1    &kp N2    &kp N3    &kp KP_PLUS
 
                                &none &trans   &trans     &trans &trans  &kp N0
             >;
@@ -197,9 +197,9 @@
 
         function {
             bindings = <
-                &none      &none       &none     &none     &none          &none  &kp F7    &kp F8    &kp F9    &kp F10
-                &none      &kp LSHIFT  &kp LGUI  &none     &none          &none  &kp F4    &kp F5    &kp F6    &kp F11
-                &kp LCTRL  &kp LALT    &none     &none     &none          &none  &kp F1    &kp F2    &kp F3    &kp F12
+                &kp LS(LCTRL) &none     &none       &none     &none          &none  &kp F7    &kp F8    &kp F9    &kp F10
+                &none         &kp LGUI  &kp LSHIFT  &none     &none          &none  &kp F4    &kp F5    &kp F6    &kp F11
+                &kp LCTRL     &kp LALT  &none       &none     &none          &none  &kp F1    &kp F2    &kp F3    &kp F12
 
                                &none &none &none      &trans &none  &none
             >;
@@ -207,9 +207,9 @@
 
         navigation {
             bindings = <
-                &none      &none       &none     &none     &none          &none  &kp HOME   &kp PGDN    &kp PGUP  &kp END
-                &none      &kp LSHIFT  &kp LGUI  &none     &none          &none  &kp LEFT   &kp DOWN    &kp UP    &kp RIGHT
-                &kp LCTRL  &kp LALT    &none     &none     &none          &none  &kp K_COPY &kp K_PASTE &kp K_CUT &none
+                &kp LS(LCTRL) &none     &none       &none     &none          &none  &kp HOME   &kp PGDN    &kp PGUP  &kp END
+                &none         &kp LGUI  &kp LSHIFT  &none     &none          &none  &kp LEFT   &kp DOWN    &kp UP    &kp RIGHT
+                &kp LCTRL     &kp LALT  &none       &none     &none          &none  &kp K_COPY &kp K_PASTE &kp K_CUT &none
 
                                &none &trans &trans      &trans &trans  &none
             >;
@@ -217,9 +217,9 @@
 
         mouse {
             bindings = <
-                &none  &msc SCRL_DOWN &mmv MOVE_UP   &msc SCRL_UP    &none          &none  &none    &none    &none    &none
-                &none  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none          &none  &none    &mo ACL0 &mo ACL1 &mo ACL2
-                &none  &kp LALT       &none          &none           &none          &none  &none    &none    &none    &none
+                &none     &msc SCRL_DOWN &mmv MOVE_UP   &msc SCRL_UP    &none          &none  &none    &none    &none    &none
+                &none     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none          &none  &none    &mo ACL0 &mo ACL1 &mo ACL2
+                &kp LCTRL &kp LALT       &none          &none           &none          &none  &none    &none    &none    &none
 
                                &none  &mkp MB4  &mkp MB5      &mkp MB1 &mkp MB2 &mkp MB3
             >;
